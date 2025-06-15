@@ -1,36 +1,6 @@
+package lab;
 import java.util.*;
-
-/** Independent educational scheduler; no WPILib dependency or team affiliation. */
-public class RobotScheduler {
-    interface Command {
-        Set<String> requirements();
-        void initialize();
-        void execute();
-        boolean finished();
-        void end(boolean interrupted);
-    }
-    private final Map<Command,Set<String>> active=new LinkedHashMap<>();
-    public void schedule(Command command){
-        if(active.containsKey(command))return;
-        Set<String> required=Set.copyOf(command.requirements());
-        for(var entry:new ArrayList<>(active.entrySet())){
-            if(!Collections.disjoint(required,entry.getValue())){
-                active.remove(entry.getKey());entry.getKey().end(true);
-            }
-        }
-        command.initialize();active.put(command,required);
-    }
-    public void tick(){
-        for(Command command:new ArrayList<>(active.keySet())){
-            if(!active.containsKey(command))continue;
-            command.execute();
-            if(command.finished()){active.remove(command);command.end(false);}
-        }
-    }
-    public void cancelAll(){
-        var commands=new ArrayList<>(active.keySet());active.clear();
-        for(Command command:commands)command.end(true);
-    }
+public class ReferenceTest {
     static class CounterCommand implements Command {
         final String subsystem; final int limit;
         int executions=0,starts=0,ends=0; boolean interrupted=false;
@@ -43,7 +13,7 @@ public class RobotScheduler {
     }
     static void require(boolean ok){if(!ok)throw new AssertionError("self-test failed");}
     public static void main(String[] args){
-        var scheduler=new RobotScheduler();
+        var scheduler=new Scheduler();
         var drive=new CounterCommand("drive",3);
         var intake=new CounterCommand("intake",2);
         scheduler.schedule(drive);scheduler.schedule(drive);scheduler.schedule(intake);
