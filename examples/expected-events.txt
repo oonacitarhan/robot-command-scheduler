@@ -1,0 +1,13 @@
+0,approach:initialize
+0,intake:initialize
+0,approach:execute:1
+0,intake:execute:1
+1,approach:execute:2
+1,approach:complete
+1,align:initialize
+1,intake:execute:2
+2,align:execute:1
+2,intake:execute:3
+2,intake:complete
+3,align:execute:2
+3,align:complete
