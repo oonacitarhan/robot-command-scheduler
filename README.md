@@ -32,7 +32,7 @@ The scheduler holds a snapshot of each active command's subsystem requirements. 
 sh scripts/check.sh
 ```
 
-Two executable regression suites and CLI failure Java checks exercise reference cases, invalid inputs, and relevant invariants.
+Two executable regression suites and CLI integration checks exercise reference cases, invalid inputs, and relevant invariants.
 The complete local run is in [docs/verification.txt](docs/verification.txt).
 The [checks workflow](.github/workflows/check.yml) executes the same source checks.
 
