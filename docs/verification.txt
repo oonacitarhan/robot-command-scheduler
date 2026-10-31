@@ -3,7 +3,8 @@ Actual local verification: 2026-11-01
 Subsystem conflict, interruption, completion and cancellation checks passed
 Sequence ordering, requirements, empty commands and deferred scheduling pass
 CLI invalid-input check passed
-benchmark_seconds,0.076920981
+Golden command lifecycle trace matched
+benchmark_seconds,0.078567628
 0,approach:initialize
 0,intake:initialize
 0,approach:execute:1
